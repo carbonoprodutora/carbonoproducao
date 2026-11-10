@@ -12,7 +12,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 110'%3E%3Cpolygon points='50,0 100,27 100,83 50,110 0,83 0,27' fill='%2336D68A'/%3E%3C/svg%3E">
 <meta property="og:title" content="Carbono Produções">
 <meta property="og:description" content="Gestão de projetos e produção de eventos, curso, mentoria e Carbono Indica.">
-<style>html,body{margin:0}img{max-width:100%}</style>
+<style>html,body{margin:0}img{max-width:100%}a.ch{text-decoration:none;color:inherit;transition:border-color .2s,background .2s}a.ch:hover{border-color:var(--accent);background:#22282B}a.ch .go{font:600 14px var(--display);color:var(--accent)}</style>
 <style>
 /* Layout: a dark graphite production board — hexagon motif from the brand, editorial left-aligned columns, green used only as signal */
 :root{
@@ -454,9 +454,9 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
       <p class="lead">Conte o que você precisa. A Carbono responde e indica o melhor formato para o seu projeto.</p>
     </div>
     <div class="contact">
-      <div class="ch"><span class="lbl">WhatsApp</span><span class="val">+55 61 98126-8021</span><div class="acts"><a href="https://wa.me/5561981268021" target="_blank" rel="noopener">Abrir conversa</a></div></div>
-      <div class="ch"><span class="lbl">E-mail</span><span class="val" id="mail">carbonoprodutora@gmail.com</span><div class="acts"><button type="button" id="copy">Copiar e-mail</button></div></div>
-      <div class="ch"><span class="lbl">Instagram</span><span class="val">@carbono.producao</span><div class="acts"><a href="https://www.instagram.com/carbono.producao/" target="_blank" rel="noopener">Ver perfil</a></div></div>
+      <a class="ch" href="https://wa.me/5561981268021?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Carbono." target="_blank" rel="noopener"><span class="lbl">WhatsApp</span><span class="val">Conversar no WhatsApp</span><span class="go">Abrir →</span></a>
+      <a class="ch" href="mailto:contato@carbonoproducao.com.br?subject=Contato%20pelo%20site"><span class="lbl">E-mail</span><span class="val">Enviar um e-mail</span><span class="go">Abrir →</span></a>
+      <a class="ch" href="https://www.instagram.com/carbono.producao/" target="_blank" rel="noopener"><span class="lbl">Instagram</span><span class="val">Ver o perfil da Carbono</span><span class="go">Abrir →</span></a>
     </div>
   </div>
 </section>
@@ -468,12 +468,5 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   </div>
 </footer>
 
-<script>
-document.getElementById('copy').addEventListener('click',function(){
-  var b=this,t=document.getElementById('mail').textContent;
-  function sel(){var r=document.createRange();r.selectNodeContents(document.getElementById('mail'));var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selecionado: copie com Ctrl+C';}
-  try{navigator.clipboard.writeText(t).then(function(){b.textContent='E-mail copiado';},sel);}catch(e){sel();}
-});
-</script>
 </body>
 </html>
