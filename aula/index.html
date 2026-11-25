@@ -24,8 +24,9 @@ h1 em{font-style:normal;color:var(--accent)}
 ul.get{list-style:none;padding:0;margin:0 0 8px}
 ul.get li{position:relative;padding-left:26px;margin:10px 0}
 ul.get li:before{content:"";position:absolute;left:0;top:8px;width:12px;height:13px;background:var(--accent);clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}
-form{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px}
-form h2{font:600 20px var(--display);margin:0 0 4px}form p.when{color:var(--muted);margin:0 0 16px;font-size:16px}
+.fcard{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px}
+.fcard h2{font:600 20px var(--display);margin:0 0 4px}.fcard p.when{color:var(--muted);margin:0 0 14px;font-size:16px}
+.fcard iframe{width:100%;height:1250px;border:0;border-radius:12px;background:#fff}
 label{display:block;font:600 14px var(--display);margin:14px 0 6px}
 input[type=text],input[type=email],input[type=tel]{width:100%;padding:13px 14px;border-radius:10px;border:1px solid var(--line);background:#121517;color:var(--fg);font:400 17px var(--body)}
 input:focus{outline:2px solid var(--accent);border-color:transparent}
@@ -59,21 +60,13 @@ footer{margin-top:36px;color:var(--muted);font-size:14px}
    </ul>
   </div>
  </div>
- <form id="f" novalidate>
+ <div class="fcard">
   <h2>Garanta sua vaga</h2>
   <p class="when">Quinta, 10 de dezembro, às 20h · on-line e gratuita</p>
-  <label for="nome">Nome</label><input id="nome" type="text" autocomplete="name" required>
-  <label for="email">E-mail</label><input id="email" type="email" autocomplete="email" required>
-  <label for="whats">WhatsApp com DDD</label><input id="whats" type="tel" autocomplete="tel" inputmode="tel" placeholder="(61) 99999-9999" required>
-  <label>Qual é o seu momento?</label>
-  <label class="opt"><input type="radio" name="momento" value="Estou começando na área de eventos" required>Estou começando na área de eventos</label>
-  <label class="opt"><input type="radio" name="momento" value="Já trabalho com eventos">Já trabalho com eventos</label>
-  <label class="opt"><input type="radio" name="momento" value="Recebi a missão de organizar um evento no trabalho">Recebi a missão de organizar um evento no trabalho</label>
-  <label class="opt" style="margin-top:14px"><input id="ok" type="checkbox" required>Aceito receber comunicações da Carbono Produções sobre esta aula e sobre o curso. Posso cancelar quando quiser.</label>
-  <button id="b" type="submit">Quero minha vaga gratuita</button>
-  <p class="err" id="err">Preencha todos os campos e marque a caixa de consentimento.</p>
+  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdB9nSa1HDOEKPGM6Mb6ohWwvPbsVQrPNhSnICI_z0UcrJERg/viewform?embedded=true" title="Formulário de inscrição" loading="eager">Carregando…</iframe>
   <p class="lgpd">Seus dados são usados só para os avisos desta aula e do curso, nunca são repassados. Para sair da lista ou pedir a exclusão, escreva para privacidade@carbonoproducao.com.br.</p>
- </form>
+  <p class="lgpd">O formulário não abriu? <a href="https://docs.google.com/forms/d/e/1FAIpQLSdB9nSa1HDOEKPGM6Mb6ohWwvPbsVQrPNhSnICI_z0UcrJERg/viewform" target="_blank" rel="noopener" style="color:var(--accent)">Inscreva-se por aqui</a>.</p>
+ </div>
  <div class="mob">
   <ul class="get">
    <li>Os cinco passos do briefing ao último pagamento</li>
@@ -88,23 +81,5 @@ footer{margin-top:36px;color:var(--muted);font-size:14px}
 </div>
 <footer>Carbono Produções · <a href="/" style="color:var(--muted)">carbonoproducao.com.br</a></footer>
 </div>
-<script>
-// Ligação com o Google Forms: preencher com os IDs do link preenchido
-var FORM_ID="1FAIpQLSdB9nSa1HDOEKPGM6Mb6ohWwvPbsVQrPNhSnICI_z0UcrJERg";
-var E={nome:"1280276834",whats:"341797492",momento:"1938355723",ok:"501290087"};
-var OK_TEXT="Aceito receber comunicações da Carbono Produções sobre esta aula e sobre o curso. Posso cancelar quando quiser.";
-document.getElementById('f').addEventListener('submit',function(ev){
- ev.preventDefault();
- var n=document.getElementById('nome').value.trim(),m=document.getElementById('email').value.trim(),w=document.getElementById('whats').value.trim();
- var mo=document.querySelector('input[name=momento]:checked'),ok=document.getElementById('ok').checked;
- var err=document.getElementById('err');
- if(!n||!/^\S+@\S+\.\S+$/.test(m)||w.replace(/\D/g,'').length<10||!mo||!ok){err.style.display='block';return}
- err.style.display='none';var b=document.getElementById('b');b.disabled=true;b.textContent='Enviando...';
- var d=new URLSearchParams();d.append('emailAddress',m);d.append('entry.'+E.nome,n);d.append('entry.'+E.whats,w);d.append('entry.'+E.momento,mo.value);d.append('entry.'+E.ok,OK_TEXT);
- fetch('https://docs.google.com/forms/d/e/'+FORM_ID+'/formResponse',{method:'POST',mode:'no-cors',body:d})
-  .then(function(){location.href='/aula/obrigado/'})
-  .catch(function(){b.disabled=false;b.textContent='Quero minha vaga gratuita';err.textContent='Não foi possível enviar agora. Tente de novo em instantes.';err.style.display='block'});
-});
-</script>
 </body>
 </html>
